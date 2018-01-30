@@ -23,7 +23,7 @@ function addUser(param, callback) {
         password,
         mobile
     } = param;
-    let nowStr = moment(new Date()).format('YYYY-MM-DD');
+    let nowStr = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
     let user = {
         username,
