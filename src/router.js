@@ -4,7 +4,7 @@ const home = require('./controller/home');
 const animals = require('./controller/animals');
 
 router.get('/home', home);
-router.get('/animals', animals);
+router.all('/animals', animals);
 
 
 module.exports = router;
