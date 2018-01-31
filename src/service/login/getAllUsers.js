@@ -1,6 +1,6 @@
 /**
  * 获取所有用户user
  */
-const {getAllUsers} = require('../../model/user');
+const User = require('../../model/user');
 
-module.exports = getAllUsers;
+module.exports = User.getAllUsers;
