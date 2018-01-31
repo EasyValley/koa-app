@@ -19,6 +19,7 @@ app.use(bodyParser({
 }));
 //路由模块
 app.use(router.routes());
+app.use(router.allowedMethods());
 //静态文件服务
 app.use(serve(path.join(__dirname, 'static')));
 //监听请求
