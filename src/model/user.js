@@ -16,7 +16,11 @@ function User(user) {
     this.gender = user.gender;
     this.birthday = user.birthday;
 }
-
+/**
+ * 添加用户
+ * @param {*用户名username，密码password，手机号mobile} param 
+ * @param {*添加用户成功回调函数} callback 
+ */
 function addUser(param, callback) {
     let {
         username,
