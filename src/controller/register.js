@@ -12,22 +12,7 @@ async function register(ctx, next) {
     //callback
     let body = req.body;
     console.log(body);
-    let result = await new Promise((resolve, reject) => {
-        registerUser(body, (err, result) => {
-            console.log('err:');
-            console.log(err);
-            console.log(result);
-            if (err) {
-                reject(err);
-            } else {
-                resolve({
-                    status: constObj.success,
-                    message: '注册成功'
-                });
-            }
-        });
-    });
-
+    let result = await registerUser(body);
     res.body = result;
 
 

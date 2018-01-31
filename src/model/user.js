@@ -18,15 +18,15 @@ function User(user) {
 }
 /**
  * 添加用户
- * @param {*用户名username，密码password，手机号mobile} param 
+ * @param {*用户名username，密码password，手机号mobile} paramUser 
  * @param {*添加用户成功回调函数} callback 
  */
-function addUser(param, callback) {
+function addUser(paramUser) {
     let {
         username,
         password,
         mobile
-    } = param;
+    } = paramUser;
     let nowStr = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
     let user = {
@@ -35,6 +35,41 @@ function addUser(param, callback) {
         registerDate: nowStr,
         mobile
     };
+
+    return new Promise((resolve, reject) => {
+        connection.beginTransaction((err) => {
+            if (err) { throw err; }
+            let insertUserSql = 'INSERT INTO users SET ?';
+            connection.query(insertUserSql, user, (error, results, fields) => {
+                if (error) {
+                    connection.rollback(() => {
+                        reject(error);
+                    });
+                }
+
+                let findOneUserSql = `SELECT uid,username,mobile,registerDate,gender,birthday FROM users WHERE uid=${results ? results['insertId'] : 0}`;
+                connection.query(findOneUserSql, (error, queryResult) => {
+                    if (error) {
+                        connection.rollback(() => {
+                            reject(error);
+                        });
+
+                    }
+                    connection.commit((error) => {
+                        if (error) {
+                            connection.rollback(() => {
+                                reject(error);
+                            });
+                        }
+                        resolve(queryResult);
+                    });
+                })
+            });
+        });
+    });
+}
+
+function getAllUsers(callback) {
     let sql = 'INSERT INTO users SET ?';
 
     let query = connection.query(sql, user, callback);
