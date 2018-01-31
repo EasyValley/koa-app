@@ -3,7 +3,6 @@
  * @param {*} ctx 
  * @param {*} next 
  */
-const constObj = require('../util/constant');
 async function handlerError(ctx, next) {
     const res = ctx.response;
     try {
@@ -12,8 +11,8 @@ async function handlerError(ctx, next) {
 
         res.status = err.statusCode || err.status || 500;
         res.body = {
-            status: constObj.fail,
-            message: err.message
+            code: res.status,
+            msg: err.message
         };
     }
 }
