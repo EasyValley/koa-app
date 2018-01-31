@@ -38,7 +38,7 @@ function addUser(paramUser) {
 
     return new Promise((resolve, reject) => {
         connection.beginTransaction((err) => {
-            if (err) { throw err; }
+            if (err) { reject(err); }
             let insertUserSql = 'INSERT INTO users SET ?';
             connection.query(insertUserSql, user, (error, results, fields) => {
                 if (error) {
@@ -69,13 +69,37 @@ function addUser(paramUser) {
     });
 }
 
-function getAllUsers(callback) {
+function getAllUsers() {
     let sql = 'INSERT INTO users SET ?';
 
-    let query = connection.query(sql, user, callback);
+    return new Promise((resolve, reject) => {
+        connection.beginTransaction((err) => {
+            if (err) {
+                reject(err);
+            }
+            let selectAllUsersSql = 'SELECT uid,username,mobile,registerDate,gender,birthday FROM users';
+            connection.query(selectAllUsersSql, (error, queryResult) => {
+                if (error) {
+                    connection.rollback(() => {
+                        reject(error);
+                    });
+
+                }
+                connection.commit((error) => {
+                    if (error) {
+                        connection.rollback(() => {
+                            reject(error);
+                        });
+                    }
+                    resolve(queryResult);
+                });
+            })
+        })
+    });
 }
 
 module.exports = {
     User,
-    addUser
+    addUser,
+    getAllUsers
 };

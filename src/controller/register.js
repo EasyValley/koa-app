@@ -4,7 +4,6 @@
  * @param {*转让执行权} next 
  */
 const registerUser = require('../service/login/registerUser');
-const constObj = require('../util/constant');
 
 async function register(ctx, next) {
     let req = ctx.request;
