@@ -19,7 +19,7 @@ const User = {
 
         let user = {
             username,
-            password: cryptoPassword(password),
+            password: cryptoPassword(password||''),
             registerDate: nowStr,
             mobile
         };
@@ -83,7 +83,7 @@ const User = {
         return new Promise((resolve, reject) => {
             connection.beginTransaction((err) => {
                 if (err) { reject(err); }
-                password = cryptoPassword(password);
+                password = cryptoPassword(password||'');
 
                 let findUserSql = `SELECT uid,username,mobile,registerDate,gender,birthday FROM users WHERE mobile='${mobile}' AND password='${password}'`;
                 connection.query(findUserSql, (error, queryResult) => {

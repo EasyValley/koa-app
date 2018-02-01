@@ -12,7 +12,7 @@ const getAllUsersHandler = require('./controller/getAllUsersHandler');
 router.use(author);
 
 /**
- * 登录，注销，注册，获取所有用户
+ * 登录，注销，注册，获取所有用户只有/login和/register不用携带token
  */
 router.post('/login',login);
 router.get('/logout',logout);
