@@ -1,1 +1,5 @@
 {"code":500,"msg":"ER_BAD_NULL_ERROR: Column 'mobile' cannot be null","level":"error","message":"","timestamp":"2018-02-01T02:54:50.515Z"}
+{"code":500,"msg":"ER_BAD_NULL_ERROR: Column 'mobile' cannot be null","level":"error","message":"","timestamp":"2018-02-01T04:59:00.484Z"}
+{"code":500,"msg":"ER_BAD_NULL_ERROR: Column 'mobile' cannot be null","level":"error","message":"","timestamp":"2018-02-01T05:10:15.296Z"}
+{"code":500,"msg":"ER_BAD_NULL_ERROR: Column 'mobile' cannot be null","level":"error","message":"","timestamp":"2018-02-01T05:11:37.855Z"}
+{"code":500,"msg":"ER_BAD_NULL_ERROR: Column 'mobile' cannot be null","level":"error","message":"","timestamp":"2018-02-01T05:23:55.913Z"}
