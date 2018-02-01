@@ -3,13 +3,12 @@ function animals(ctx) {
     const req = ctx.request;
     const res = ctx.response;
     //提取查询字符串
-    // res.body = [
-    //     {
-    //         name:'hozi'
-    //     }
-    // ];
+    res.body = [
+        {
+            name:'hozi'
+        }
+    ];
     
-    ctx.redirect('/home')
 
 }
 

@@ -12,7 +12,7 @@ async function handlerError(ctx, next) {
         res.status = err.statusCode || err.status || 500;
         let returnData = {
             code: res.status,
-            msg: err.message
+            message: err.message
         };
         ctx.logger.error(err);
         res.body = returnData;
