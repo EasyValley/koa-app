@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: 'root',
     database: 'koaapp',
-    debug:false
+    debug:true
 });
 
 connection.connect(function (err) {

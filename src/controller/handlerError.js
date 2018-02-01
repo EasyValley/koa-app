@@ -8,8 +8,6 @@ async function handlerError(ctx, next) {
     try {
         await next();
     } catch (err) {
-        console.log(err);
-        console.log('没有法律')
         
         res.status = err.statusCode || err.status || 500;
         let returnData = {
