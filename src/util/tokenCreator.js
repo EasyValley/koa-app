@@ -11,8 +11,13 @@ const tokenCreator = {
      */
     async sign(user, expiresIn) {
         return new Promise((resolve, reject) => {
-
-            jwt.sign({ user }, SECRET, { expiresIn }, (err, token) => {
+            let optional = {};
+            if (expiresIn) {
+                optional = {
+                    expiresIn
+                };
+            }
+            jwt.sign({ user }, SECRET, optional, (err, token) => {
                 if (err) {
                     reject(err);
                 } else {

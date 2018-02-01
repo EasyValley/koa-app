@@ -10,7 +10,7 @@ async function login(ctx, next) {
         let userArr = await findUser(req.body);
         if ((userArr instanceof Array) && userArr[0]) {
             let user = userArr[0];
-            let token = await tokenCreator.sign(user, '1h');
+            let token = await tokenCreator.sign(user);
             res.body = {
                 user,
                 token
