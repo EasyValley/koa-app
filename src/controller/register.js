@@ -10,7 +10,8 @@ async function register(ctx, next) {
     let res = ctx.response;
     //callback
     let body = req.body;
-    console.log(body);
+    console.log(ctx.token);
+    console.log(req.body);
     let result = await registerUser(body);
     res.body = result;
 

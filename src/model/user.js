@@ -15,10 +15,10 @@ const User = {
      */
     addUser(paramUser) {
         let {
-        username,
+            username,
             password,
             mobile
-    } = paramUser;
+        } = paramUser;
         let nowStr = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
         let user = {
