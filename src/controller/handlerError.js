@@ -14,7 +14,7 @@ async function handlerError(ctx, next) {
             code: res.status,
             msg: err.message
         };
-        ctx.logger.error(returnData);
+        ctx.logger.error(err);
         res.body = returnData;
     }
 }
