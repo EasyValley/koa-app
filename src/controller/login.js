@@ -6,11 +6,10 @@ async function login(ctx, next) {
         name: '张三',
         email: 'zs@qq.com'
     };
-    let token = await tokenCreator.sign(user, '30s');
+    let token = await tokenCreator.sign(user, '1h');
 
     ctx.response.body = {
-        token,
-        s: '放火案ff'
+        token
     };
 }
 
