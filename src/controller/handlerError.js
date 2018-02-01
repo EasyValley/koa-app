@@ -8,12 +8,14 @@ async function handlerError(ctx, next) {
     try {
         await next();
     } catch (err) {
-
+        
         res.status = err.statusCode || err.status || 500;
-        res.body = {
+        let returnData = {
             code: res.status,
             msg: err.message
         };
+        ctx.logger.error(returnData);
+        res.body = returnData;
     }
 }
 

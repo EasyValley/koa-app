@@ -1,0 +1,1 @@
+{"code":500,"msg":"ER_BAD_NULL_ERROR: Column 'mobile' cannot be null","level":"error","message":"","timestamp":"2018-02-01T02:54:50.515Z"}
