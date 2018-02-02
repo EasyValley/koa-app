@@ -108,7 +108,7 @@ const User = {
     },
 
     getAllUsers() {
-        let sql = 'INSERT INTO users SET ?';
+        
 
         return new Promise((resolve, reject) => {
             connection.beginTransaction((err) => {
