@@ -1,6 +1,6 @@
 
-const tokenCreator = require('../util/tokenCreator');
-const findUser = require('../service/login/findUser');
+const tokenCreator = require('../../util/tokenCreator');
+const findUser = require('../../service/login/findUser');
 
 async function login(ctx, next) {
     let req = ctx.request;

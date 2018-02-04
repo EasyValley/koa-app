@@ -1,22 +1,17 @@
 const Router = require('koa-router');
 const router = new Router();
-const author = require('./util/author');
-const login = require('./controller/login');
-const logout = require('./controller/logout');
-const register = require('./controller/register');
+const wrapAuthor = require('./util/wrapAuthor');
+const login = require('./controller/user/login');
+const register = require('./controller/user/register');
+const user = require('./controller/user/user');
 const getAllUsersHandler = require('./controller/getAllUsersHandler');
-
-/**
- * 权限控制
- */
-router.use(author);
 
 /**
  * 登录，注销，注册，获取所有用户只有/login和/register不用携带token
  */
-router.post('/login',login);
-router.get('/logout',logout);
+router.post('/login', login);
 router.post('/register', register);
-router.get('/users', getAllUsersHandler);
+router.all('/user', wrapAuthor(user));
+router.get('/users', wrapAuthor(getAllUsersHandler));
 
 module.exports = router;

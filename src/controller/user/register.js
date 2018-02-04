@@ -3,8 +3,8 @@
  * @param {*请求响应上下文} ctx 
  * @param {*转让执行权} next 
  */
-const registerUser = require('../service/login/registerUser');
-const tokenCreator = require('../util/tokenCreator');
+const registerUser = require('../../service/login/registerUser');
+const tokenCreator = require('../../util/tokenCreator');
 
 async function register(ctx, next) {
     let req = ctx.request;
