@@ -19,7 +19,7 @@ const User = {
 
         let user = {
             username,
-            password: cryptoPassword(password||''),
+            password: cryptoPassword(password || ''),
             registerDate: nowStr,
             mobile
         };
@@ -49,7 +49,7 @@ const User = {
                                 });
                             }
 
-                            let findOneUserSql = `SELECT uid,username,mobile,registerDate,gender,birthday FROM users WHERE uid=${results ? results['insertId'] : 0}`;
+                            let findOneUserSql = `SELECT avatar,birthday,gender,mobile,registerDate,uid,username FROM users WHERE uid=${results ? results['insertId'] : 0}`;
                             connection.query(findOneUserSql, (error, queryResult) => {
                                 if (error) {
                                     connection.rollback(() => {
@@ -83,9 +83,9 @@ const User = {
         return new Promise((resolve, reject) => {
             connection.beginTransaction((err) => {
                 if (err) { reject(err); }
-                password = cryptoPassword(password||'');
+                password = cryptoPassword(password || '');
 
-                let findUserSql = `SELECT uid,username,mobile,registerDate,gender,birthday FROM users WHERE mobile='${mobile}' AND password='${password}'`;
+                let findUserSql = `SELECT avatar,birthday,gender,mobile,registerDate,uid,username FROM users WHERE mobile='${mobile}' AND password='${password}'`;
                 connection.query(findUserSql, (error, queryResult) => {
                     if (error) {
 
@@ -108,14 +108,14 @@ const User = {
     },
 
     getAllUsers() {
-        
+
 
         return new Promise((resolve, reject) => {
             connection.beginTransaction((err) => {
                 if (err) {
                     reject(err);
                 }
-                let selectAllUsersSql = 'SELECT uid,username,mobile,registerDate,gender,birthday FROM users';
+                let selectAllUsersSql = 'SELECT avatar,birthday,gender,mobile,registerDate,uid,username FROM users';
                 connection.query(selectAllUsersSql, (error, queryResult) => {
                     if (error) {
                         connection.rollback(() => {
